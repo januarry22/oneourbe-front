@@ -9,7 +9,7 @@
         v-bind="{active: currentTab === index}"
         @click="currentTab = index"
         :class="{active: currentTab === index}"
-        
+    
         >
           {{tab}}
         </button>

@@ -3,7 +3,7 @@
       <div class="search-wrap">
         <div class="search">
           <b-icon icon="search"></b-icon>
-          <input type="text" placeholder="오늘의집 통합검색">
+          <input type="text" placeholder="통합검색 엔진">
         </div>
 
         <button> <b-icon icon="bookmark"></b-icon></button>
