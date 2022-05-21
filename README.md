@@ -1,4 +1,13 @@
-# jiwon
+# Oneourbe Front Page
+
+
+## Project Info
+```
+Vue.js 
+
+published by tgynalop@gmail.com
+```
+
 
 ## Project setup
 ```
