@@ -1,16 +1,18 @@
 <template>
-    <div class="slider-wrap">
+    <div class="slider-wrap" >
         <swiper class="swiper" ref="mySwiper" 
             :options="swiperOptions" 
-            @slideChange="slideChangeTransitionStart"
+          
         >
-            <swiper-slide><img src="../assets/img/bnn1.jpg" alt=""></swiper-slide>
-            <swiper-slide><img src="../assets/img/bnn2.jpg" alt=""></swiper-slide>
+            <swiper-slide  v-for="(item,id) in banner" :key="id">
+                <img :src="require(`@/assets/img/${item.img_url}`)" @click="bannerLink(item.link_url)"/> 
+                </swiper-slide>
+          <!-- <swiper-slide><img src="../assets/img/bnn2.jpg" alt=""></swiper-slide>
             <swiper-slide><img src="../assets/img/bnn3.jpg" alt=""></swiper-slide>
             <swiper-slide><img src="../assets/img/bnn4.jpg" alt=""></swiper-slide>
             <swiper-slide><img src="../assets/img/bnn5.jpg" alt=""></swiper-slide>
             <swiper-slide><img src="../assets/img/bnn6.jpg" alt=""></swiper-slide>
-            <swiper-slide><img src="../assets/img/bnn7.jpg" alt=""></swiper-slide>
+            <swiper-slide><img src="../assets/img/bnn7.jpg" alt=""></swiper-slide>  -->
         </swiper>
         <div class="pagination-wrap">
             <div class="swiper-pagination" slot="pagination"></div>
@@ -21,21 +23,11 @@
 
 <script>
 	import {Swiper,SwiperSlide} from 'vue-awesome-swiper'
-
-	export default {
-		name: 'BnnSlider',
-		components: {
-			Swiper,
-			SwiperSlide
-		},
-		methods: {
-			slideChangeTransitionStart() {
-				console.log(this.swiper.activeIndex); //현재 index값 얻기
-			}
-		},
-		data() {
-			return {
-				swiperOptions: {
+    export default {
+        name: 'BnnSlider',
+        data: function () {
+            return {
+            swiperOptions: {
 					loop: true,
 					autoplay:true,
                     speed: 500,
@@ -44,16 +36,40 @@
                         type: "fraction"
 					},                   
 				},
-			}
+            banner: []
+            }
+            
+        },
+        components: {
+			Swiper,
+			SwiperSlide
 		},
-		computed: {
+        created: function () {
+            this.getList()
+        },
+        methods: {
+            // slideChangeTransitionStart() {
+			// 	console.log(this.swiper.activeIndex); //현재 index값 얻기
+			// },
+            getList: function () {
+            // axios를 이용하여 API 호출 (component 안에서 axios를 this.$axios로 사용할 수 있습니다.)
+            this.$axios.get('/api/v1/banner').then(response => {
+                this.banner = response.data.data
+              //  console.log('### data: ' + JSON.stringify(this.banner,null,2))
+            }).catch(error => {
+                console.log(error)
+            })
+            },
+            bannerLink: function(link){
+                location.href=link
+            }
+        },
+        computed: {
 			swiper() {
 				return this.$refs.mySwiper.$swiper;
 			}
 		},
-
-
-	}
+    }
 </script>
 
 <style  scoped>

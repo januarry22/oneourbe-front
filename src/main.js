@@ -11,12 +11,21 @@ import 'swiper/css/swiper.css'
 Vue.use(VueAwesomeSwiper);
 
 import './assets/reset.css'
+import axios from 'axios'
 
 Vue.config.productionTip = false
 
 Vue.use(BootstrapVue)
 Vue.use(BootstrapVueIcons)
 Vue.use(VueDragscroll)
+
+// axios
+//Vue.use(axios)
+
+Vue.prototype.$http = axios; // Correct
+Vue.prototype.$axios = axios
+
+
 
 new Vue({
   router,
