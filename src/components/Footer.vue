@@ -48,10 +48,10 @@
             </ul>
         </div>
         <div class="company-info">
-            <h3>(주)버킷플레이스</h3>
-            <p>대표이사 이승재</p>
-            <p>서울 서초구 서초대로74길 4 삼성생명서초타워 27층</p>
-            <p>contact@bucketplace@net <span></span> 1670-0876</p>
+            <h3>{{companyInfo.name}}</h3>
+            <p>{{companyInfo.ceo}}</p>
+            <p>{{companyInfo.addr}}</p>
+            <p>{{companyInfo.email}} <span></span> {{companyInfo.tel}}</p>
         </div>
         <ul class="footer-nav">
             <li>
@@ -65,11 +65,28 @@
 </template>
 
 <script>
-
 export default {
 //eslint-disable-next-line
-  name: 'Footer',
-
+    name: 'Footer',
+    data: function () {
+             return {
+                companyInfo: []
+            }
+                
+        },
+        created: function () {
+            this.getcompanyInfo()
+        },
+        methods: {
+            getcompanyInfo: function () {
+            this.$axios.get('/api/v1/company').then(response => {
+                this.companyInfo = response.data.data
+               // console.log('### data: ' + JSON.stringify(this.companyInfo,null,2))
+            }).catch(error => {
+                console.log(error)
+            })
+            },
+        },
 
 }
 </script>
