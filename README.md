@@ -42,3 +42,14 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
     console.log('### response: ' + JSON.stringify(con,null,2))
 
     // 객체로 변환 후 pretty 출력
+    
+ 
+  - Vue : router-link 사용하기
+    - 다른 router로 이동 
+    
+    router.push({
+      name: 'SiteList',
+      params: { site: 'webisfree.com' }
+    })
+    
+    // 파라미터 전달 가능 
