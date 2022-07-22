@@ -54,11 +54,9 @@
             <p>{{companyInfo.email}} <span></span> {{companyInfo.tel}}</p>
         </div>
         <ul class="footer-nav">
-            <li>
-                <router-link to="/">이용약관</router-link>
-            </li>
-            <li>
-                <router-link to="/">개인정보처리방침</router-link>
+            <!-- TODO: 약관 내용 팝업 출력 or 페이지이동 -->
+            <li v-for="(item,id) in policyList" :key="id">
+                <router-link to="">{{item.title}}</router-link>
             </li>
         </ul>
     </div>
@@ -70,12 +68,14 @@ export default {
     name: 'Footer',
     data: function () {
              return {
-                companyInfo: []
+                companyInfo: [],
+                policyList:[]
             }
                 
         },
         created: function () {
             this.getcompanyInfo()
+            this.getPolicy()
         },
         methods: {
             getcompanyInfo: function () {
@@ -86,6 +86,14 @@ export default {
                 console.log(error)
             })
             },
+             getPolicy: function () {
+            this.$axios.get('/api/v1/policy').then(response => {
+                this.policyList = response.data.data
+               // console.log('### data: ' + JSON.stringify(this.policyList,null,2))
+            }).catch(error => {
+                console.log(error)
+            })
+            }
         },
 
 }
