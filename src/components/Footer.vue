@@ -2,16 +2,16 @@
     <div class="footer">
         <div class="benefits">
             <ul>
-                <li>
+                <li  v-for="(section,id) in footerNoti" :key="id">
                     <router-link to="/">
-                        <img src="../assets/img/icon-footer1.png" alt="친구 초대">
+                        <img :src="section.icon_img" alt="">
                         <div>
-                            <h4>친구 초대</h4>
-                            <p>5000포인트<br>선물까지</p>
+                            <h4>{{section.title}}</h4>
+                            <p>{{section.content}}</p>
                         </div>
                     </router-link>
                 </li>
-                <li>
+                <!-- <li>
                     <router-link to="/">
                         <img src="../assets/img/icon-footer2.png" alt="오늘의집 스토리">
                         <div>
@@ -44,7 +44,7 @@
                             <p>사업자 구매 회원에게<br>혜택을 드립니다.</p>
                         </div>
                     </router-link>
-                </li>
+                </li> -->
             </ul>
         </div>
         <div class="company-info">
@@ -69,13 +69,15 @@ export default {
     data: function () {
              return {
                 companyInfo: [],
-                policyList:[]
+                policyList:[],
+                footerNoti:[]
             }
                 
         },
         created: function () {
             this.getcompanyInfo()
             this.getPolicy()
+            this.getfooterNoti()
         },
         methods: {
             getcompanyInfo: function () {
@@ -87,12 +89,20 @@ export default {
             })
             },
              getPolicy: function () {
-            this.$axios.get('/api/v1/policy').then(response => {
-                this.policyList = response.data.data
-               // console.log('### data: ' + JSON.stringify(this.policyList,null,2))
-            }).catch(error => {
-                console.log(error)
-            })
+                this.$axios.get('/api/v1/policy').then(response => {
+                    this.policyList = response.data.data
+                // console.log('### data: ' + JSON.stringify(this.policyList,null,2))
+                }).catch(error => {
+                    console.log(error)
+                })
+            },
+             getfooterNoti: function () {
+                this.$axios.get('/api/v1/footer/noti').then(response => {
+                    this.footerNoti = response.data.data
+                // console.log('### data: ' + JSON.stringify(this.policyList,null,2))
+                }).catch(error => {
+                    console.log(error)
+                })
             }
         },
 
