@@ -4,6 +4,8 @@
             <ul>
                 <li  v-for="(section,id) in footerNoti" :key="id">
                     <router-link to="/">
+                    <!-- TODO: icon null 값이면 에러 -->
+                        <img :src="require(`@/assets/img/${section.icon_img}`)" alt="">
                         <img :src="section.icon_img" alt="">
                         <div>
                             <h4>{{section.title}}</h4>

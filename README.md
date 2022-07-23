@@ -56,5 +56,9 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 
   - <img> 태그 src :
-      - require(`@/assets/img/${item.img_url}`) 로 렌딩 할경우 front 서버 내의 이미지 경로 호출
-      - src ="section.icon_img" 객체 에서 바로 렌딩 할 경우 서버에서 호출 
+      
+        <img :src="require(`@/assets/img/${section.icon_img}`)" alt="">
+        - require(`@/assets/img/${item.img_url}`) 로 렌딩 할경우 front 서버 내의 이미지 경로 호출
+
+        <img :src="section.icon_img" alt="">
+        - src ="section.icon_img" 객체 에서 바로 렌딩 할 경우 서버에서 호출 
