@@ -6,47 +6,13 @@
                     <router-link to="/">
                     <!-- TODO: icon null 값이면 에러 -->
                         <img :src="require(`@/assets/img/${section.icon_img}`)" alt="">
-                        <img :src="section.icon_img" alt="">
+                        <!-- <img :src="section.icon_img" alt=""> -->
                         <div>
                             <h4>{{section.title}}</h4>
                             <p>{{section.content}}</p>
                         </div>
                     </router-link>
                 </li>
-                <!-- <li>
-                    <router-link to="/">
-                        <img src="../assets/img/icon-footer2.png" alt="오늘의집 스토리">
-                        <div>
-                            <h4>오늘의집 스토리</h4>
-                            <p>오늘의집이<br>궁금해요.</p>
-                        </div>
-                    </router-link>
-                </li>
-                <li>
-                    <router-link to="/">
-                        <img src="../assets/img/icon-footer3.png" alt="고객센터">
-                        <div>
-                            <h4>고객센터</h4>
-                            <p>평일 09:00~ 18:00<br>(주말 &amp; 공휴일 제외)</p>
-                        </div>
-                    </router-link>
-                </li>
-                <li>
-                    <router-link to="/">
-                        <div>
-                            <h4>전문가 회원 가입</h4>
-                            <p>인테리어 전문가님들!<br>오늘의집과 함께하세요.</p>
-                        </div>
-                    </router-link>
-                </li>
-                <li>
-                    <router-link to="/">
-                        <div>
-                            <h4>사업자 구매 회원 전환</h4>
-                            <p>사업자 구매 회원에게<br>혜택을 드립니다.</p>
-                        </div>
-                    </router-link>
-                </li> -->
             </ul>
         </div>
         <div class="company-info">

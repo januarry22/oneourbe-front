@@ -109,8 +109,8 @@
           <h2>카테고리별 상품 찾기</h2 >
           <ul class="category-menu" v-dragscroll>
             <li v-for="(item,id) in category" :key="id"><router-link to="/">
-              <div class="img"><img :src="require(`@/assets/img/category-item${id+1}.webp`)" :alt="`${item}`"/> </div>
-              <p>{{ item }}</p>
+              <div class="img"><img :src=item.icon_img :alt="`${item.name}`"/> </div>
+              <p>{{ item.name }}</p>
             </router-link></li>
           </ul>
         </section>
@@ -309,14 +309,25 @@ export default {
   directives: {
     'dragscroll': dragscroll
   },
+   created: function () {
+            this.getCategory()
+        },
   methods: {
     slideIndex() {
       console.log(this.swiper.activeIndex); //현재 index값 얻기
+    },
+    getCategory: function () {
+            this.$axios.get('/api/v1/category/main').then(response => {
+                this.category = response.data.data
+               // console.log('### data: ' + JSON.stringify(this.companyInfo,null,2))
+            }).catch(error => {
+                console.log(error)
+      })
     }
   },
-  data() {
+  data: function () {
     return {
-      category:["데코·식물","주방용품","가구","패브릭","수납·정리","조명","생활용품","가전","공구·DIY","생필품","반려동물","유아·아동","캠핑용품","실내운동"],
+      category:[],
       list1:[
         {
           title: '150만원으로 실속있게 꾸민',
