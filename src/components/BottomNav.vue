@@ -1,30 +1,16 @@
 <template>
     <div class="bottom-nav">
         <ul>
-          <li class="active">
-            <router-link to="/">
-              <img src="../assets/img/bottom-menu1.png" alt="">           
-              <p>홈</p>
-            </router-link>
-          </li>
-          <li>
-            <router-link to="/">
-              <img src="../assets/img/bottom-menu2.png" alt="">               
-              <p>스토어</p>
-            </router-link>
-          </li>
-          <li>
-            <router-link to="/">
-              <img src="../assets/img/bottom-menu3.png" alt=""> 
-              <p>인테리어시공</p>
-                <b-badge class="new">N</b-badge>
-            </router-link>
-          </li>
-          <li>
-            <router-link to="/">
-              <img src="../assets/img/bottom-menu4.png" alt="">   
-              <p>마이페이지</p>
-            </router-link>
+          <!-- <li class="active"> -->
+          <li 
+            v-for="(tab,id) in tabs" :key="id" 
+            v-bind:class="{active:currentTab==id}"
+            v-on:click="currentTab = id"
+            >
+            <!-- <router-link :to="tab.href"> -->
+              <img :src="require(`@/assets/img/${tab.icon}`)" alt="">           
+              <p>{{tab.name}}</p>
+            <!-- </router-link> -->
           </li>
           <li class="more">
             <button>
@@ -36,16 +22,54 @@
           </li>
         </ul>
     </div>
+  
 </template>
 
 <script>
+
 import { BIcon } from 'bootstrap-vue'
+
 export default {
   name: 'BottomNav',
-
+  data: function () {
+      return {
+        currentTab: 0,
+        tabs: [
+          {
+            'name':'Home',
+            'href' :'/',
+            'icon' :'bottom-menu1.png',
+            selected : true
+          },
+          {
+            'name':'스토어',
+            'href' :'/',
+            'icon' :'bottom-menu2.png',
+            selected : false
+          },
+           {
+            'name':'인테리어시공',
+            'href' :'/',
+            'icon' :'bottom-menu3.png',
+            selected : false
+          },
+          {
+            'name':'마이페이지',
+            'href' :'/myPage',
+            'icon' :'bottom-menu4.png',
+            selected : false
+          }
+        ],
+        toggleFn: function(tab){
+            tab.selected = !tab.selected
+            location.href=tab.href
+        }
+      }
+            
+  },
   components: {
     BIcon,
-  },
+  }
 
 }
 </script>
