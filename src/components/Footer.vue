@@ -65,7 +65,7 @@ export default {
                 })
             },
              getfooterNoti: function () {
-                this.$axios.get('/api/v1/footer/noti').then(response => {
+                this.$axios.get('/api/v1/noti/footer').then(response => {
                     this.footerNoti = response.data.data
                 // console.log('### data: ' + JSON.stringify(this.policyList,null,2))
                 }).catch(error => {

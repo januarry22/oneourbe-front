@@ -23,17 +23,19 @@
       </div>
     </div>
      <div class="cs-noti">
-      <ul class="cs-notilist">
+      <ul class="cs-notilist" v-for="(noti,id) in noticeList" :key="id">
           <li>
-              <p><b-icon icon="megaphone-fill" style="color: #36C5F1; margin-right:10px"></b-icon>
-                    답변 이벤트 아낸 및 활동 주의사항</p>
+              <p>
+                <b-icon icon="megaphone-fill" style="color: #36C5F1; margin-right:10px"></b-icon>
+                    {{noti.title}}
+               </p>
           </li>
-          <li>
+          <!-- <li>
               <p>빠르고 정확한 인테리어 답변을 받는 방법은?</p>
           </li>
           <li>
               <p>다시 돌아온 8월 멘토 모집</p>
-          </li>
+          </li> -->
       </ul>
     </div>
 
@@ -70,12 +72,16 @@ export default {
     BIcon,
   },
    created: function () {
-            this.getCategory()
-        },
+            this.csNotiList()
+  },
   methods: {
-    getCategory: function () {
-            this.$axios.get('/api/v1/category/main').then(response => {
-                this.category = response.data.data
+    csNotiList: function () {
+            this.$axios.post('/api/v1/noti',
+                {
+                  "type" : "CS_NOTI"
+                }
+            ).then(response => {
+                this.noticeList = response.data.data
                // console.log('### data: ' + JSON.stringify(this.companyInfo,null,2))
             }).catch(error => {
                 console.log(error)
@@ -84,7 +90,7 @@ export default {
   },
   data: function () {
     return {
-
+        noticeList:[]
      }
   },
 
