@@ -30,20 +30,17 @@
                     {{noti.title}}
                </p>
           </li>
-          <!-- <li>
-              <p>빠르고 정확한 인테리어 답변을 받는 방법은?</p>
-          </li>
-          <li>
-              <p>다시 돌아온 8월 멘토 모집</p>
-          </li> -->
       </ul>
     </div>
 
-     <div class="cs-content">
+     <div class="cs-content" v-for="(review,id) in reviews" :key="id">
       <ul class="cs-cont">
               <li>
-                  <p class="con-title">후기 구히귀구히귀</p>
-                  <p class="cont">닉넴</p>
+                  <p class="con-title">{{review.title}}</p>
+                  <p class="cont"> 
+                    <img src="../../assets/img/icon-top-menu1.png" alt="닉네임">
+                      닉넴
+                  </p>
               </li>
               <li>
                   <p class="cont">2022.07.06 | 댓글 4 | 조회 19</p>
@@ -55,27 +52,29 @@
                     <span class="tag"># 인테리어</span>
                 </p>
               </li>
-      </ul>
+      </ul>        
         <img src="../../assets/img/icon-top-menu1.png" alt="쇼핑하기">
      </div>
+      <infinite-loading @infinite="infiniteHandler" spinner="waveDots"></infinite-loading>
 </div>
 </template>
 
 <script>
 import { BIcon } from 'bootstrap-vue'
-import { dragscroll } from 'vue-dragscroll'
+import InfiniteLoading from "vue-infinite-loading";
 
 export default {
   //eslint-disable-next-line
   name: 'csCenter',
   components: {
     BIcon,
+    InfiniteLoading
   },
    created: function () {
             this.csNotiList()
   },
   methods: {
-    csNotiList: function () {
+    csNotiList: function () { 
             this.$axios.post('/api/v1/noti',
                 {
                   "type" : "CS_NOTI"
@@ -86,10 +85,35 @@ export default {
             }).catch(error => {
                 console.log(error)
       })
-    }
+    },
+     infiniteHandler($state) {
+            this.$axios.post('/api/v1/noti',
+                {
+                  "type" : "CS_NOTI"
+                }
+            ).then(res => {
+                    if(res.data.totalPages == this.loadNum){
+                        $state.complete();
+                    }else{
+                        setTimeout(() => {
+                            const data = res.data.data;
+                            for(let key in data){
+                                this.reviews.push(data[key])
+                            }
+                            this.loadNum++;
+                            $state.loaded();
+                        }, 1000)
+                    }
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
   },
   data: function () {
     return {
+            reviews: [],
+            loadNum: 0,
         noticeList:[]
      }
   },
@@ -148,6 +172,11 @@ export default {
 .cont{
     font-size: 13px;
     color: #928e8e;
+    display: flex;
+    align-items: center;
+}
+.cont  > img{
+    max-width: 30px;
 }
 .tag{
     background-color: #e3e2e2;
