@@ -76,6 +76,7 @@
     align-items: center;
     flex-wrap: nowrap;
     padding: 0 10px;
+    justify-content: space-evenly;
   }
   .slide-menu .nav-tabs .nav-link{
     display: block;

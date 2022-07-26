@@ -263,7 +263,7 @@
 </template>
 
 <script>
-import BnnSlider from '@/components/BnnSlider';
+import BnnSlider from '@/components/banner/MainBanner';
 import { BIcon } from 'bootstrap-vue'
 import { dragscroll } from 'vue-dragscroll'
 import BestTabItem from "@/components/BestTabItem.vue";
