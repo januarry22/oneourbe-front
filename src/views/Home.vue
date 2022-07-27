@@ -5,10 +5,10 @@
       <Footer></Footer>
     </div>
     <div v-show="currentTab == 1">
-      <MyPage></MyPage>
+      <StorePage></StorePage>
     </div>
     <div v-show="currentTab == 2">
-      <MainPage></MainPage>
+      <ConnectStore></ConnectStore>
     </div>
      <div v-show="currentTab == 3">
       <MyPage></MyPage>
@@ -38,6 +38,8 @@
 </template>
 
 <script>
+import StorePage from '@/components/store/StorePage.vue';
+import ConnectStore from '@/components/connect/ConnectStore.vue';
 import MyPage from '@/components/mypage/MyPage.vue';
 import MainPage from '@/components/main/MainPage.vue';
 import Footer from '@/components/Footer.vue';
@@ -51,7 +53,9 @@ export default {
     Footer,
     BIcon,
     MainPage,
-    MyPage
+    MyPage,
+    StorePage,
+    ConnectStore
   },
   directives: {
     'dragscroll': dragscroll
