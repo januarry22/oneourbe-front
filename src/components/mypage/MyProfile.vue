@@ -1,6 +1,17 @@
 <template>
 <div>
    <div class="list-wrap">
+      <div class="profile">
+          <div class="profile-img">
+            <img src="../../assets/img/icon-top-menu2.png" alt="오늘의집배송">
+          </div>
+          <div class="profile-info">
+            <p class="nickname">닉네임</p>
+            <p>팔로워 <strong>0</strong>  |  팔로잉 <strong>0</strong></p>
+            <button>친구 초대하고 <strong>5,000P</strong> 받기</button>
+          </div>
+
+      </div>
       <div class="cs-container">
         <div>
             <p class="light"><b-icon icon="bell-fill"></b-icon></p>
@@ -164,6 +175,53 @@ export default {
   /* @import "../../assets/style.css"; */
 .index{
     background-color: #ffffff;
+}
+.profile{
+    margin: 4%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.profile-info .nickname{
+    font-size: 17px;
+    font-weight: 600; 
+    color: #000000;
+}
+.profile-img{
+    border-radius: 100px;
+    height: 100px;
+    width: 100px;
+}
+.profile-info > p{    
+    margin: 10px;
+    font-size: 12px;
+    color: #adb5bd;
+}
+.profile-info > p > strong{    
+    font-size: 12px;
+}
+.profile-info{    
+    width: 63%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.profile-info > button{
+    font-size: 10px;
+    background-color: #ddf7ff;
+    padding: 7px 15px 7px 15px;
+    border-radius: 4px;
+}
+.profile-info > button > strong{
+    font-size: 10px;
+    font-weight: bold;
+    color: #36C5F1;
+}
+.profile-img > img{
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+    object-fit: cover;
 }
 .slide-menu{
     text-align: center;
