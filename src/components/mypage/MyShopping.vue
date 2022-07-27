@@ -22,7 +22,7 @@
 
 
     <div class="list-wrap">
-      <p><span class="list-font">진행중인 주문<l>(최근 3개월)</l></span></p>
+      <p><span class="list-font">진행중인 주문  <l>(최근 3개월)</l></span></p>
       <div class="cs-container">
         <div>
             <p class="auto">입금<br>대기</p>
@@ -339,6 +339,9 @@ export default {
     display: block;
     font-weight: 500;
     color: #3b3a3a;
+  }
+  .list-font > l{
+    color: #8b8b8b;
   }
 .list-wrap > ul > li{
     width: 30%;
