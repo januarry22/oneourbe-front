@@ -3,54 +3,59 @@
    <div class="list-wrap">
       <div class="cs-container">
         <div>
-            <p class="light"><b-icon icon="bell-fill"></b-icon></p>
-            <p class="auto-set">알림</p>
+            <p class="light"><b-icon icon="credit-card2-front"></b-icon></p>
+            <p class="auto-set">쿠폰 <strong>1</strong></p>
         </div>   
         <div>
-            <p class="light"><b-icon icon="bookmark-fill"></b-icon></p>
-            <p class="auto-set"> 스크랩북 </p>
+            <p class="light"><b-icon icon="coin"></b-icon></p>
+            <p class="auto-set"> 포인트 <strong>520</strong></p>
         </div>
         <div>
-              <p class="light"><b-icon icon="heart-fill"></b-icon></p>
-              <p class="auto-set"> 좋아요 </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="list-wrap">
-      <p><span class="list-font">나의 쇼핑</span><button> > </button></p>
-      <div class="cs-container" style="background-color: #f3f3f3dd;">
-        <div>
-            <p class="light">0</p>
-            <p class="auto">진행중 주문 </p>
-        </div>   
-        <div>
-            <p class="light">0</p>
-            <p class="auto"> 내 쿠폰</p>
-        </div>
-        <div>
-              <p class="light">0</p>
-              <p class="auto"> 포인트 </p>
+              <p class="light"><b-icon icon="trophy"></b-icon></p>
+              <p class="auto-set"> 회원등급 <strong>WELCOME</strong></p>
         </div>
       </div>
     </div>
     <div class="list-wrap">
           <BnnSlider></BnnSlider>
     </div>
+
+
     <div class="list-wrap">
-      <p><span class="list-font">스크랩북 </span><button> > </button></p>
-          <ul>
-            <li v-for="(item,id) in list1" :key="id">
-              <div class="img">
-                <img :src="require(`@/assets/img/${item.img}`)" /> 
-                <button class="item-bookmark">
-                  <b-icon icon="bookmark"></b-icon>
-                  <b-icon icon="bookmark-fill"></b-icon>
-                </button>
-              </div>
-            </li>
-          </ul>
+      <p><span class="list-font">진행중인 주문<l>(최근 3개월)</l></span></p>
+      <div class="cs-container">
+        <div>
+            <p class="auto">입금<br>대기</p>
+            <p class="light">0</p>
+        </div>   
+          <b-icon icon="chevron-right"></b-icon>
+        <div>
+            <p class="auto"> 결제<br>완료</p>
+            <p class="light">0</p>
+        </div>
+          <b-icon icon="chevron-right"></b-icon>
+        <div>
+              <p class="auto"> 배송<br>준비 </p>
+              <p class="light">0</p>
+        </div>
+          <b-icon icon="chevron-right"></b-icon>
+          <div>
+              <p class="auto"> 배송중 </p>
+              <p class="light">0</p>
+        </div>
+          <b-icon icon="chevron-right"></b-icon>
+          <div>
+              <p class="auto"> 배송<br>완료 </p>
+              <p class="light">0</p>
+        </div>
+          <b-icon icon="chevron-right"></b-icon>
+          <div>
+              <p class="auto"> 리뷰<br>쓰기 </p>
+              <p class="light">0</p>
+        </div>
+      </div>
     </div>
+
      <div class="cs-noti">
       <ul class="cs-notilist">
           <li  v-for="(menu,id) in menus" :key="id">
@@ -131,23 +136,19 @@ export default {
       ],
             menus: [
               {
-                'name': '집들이',
+                'name': '주문배송내역 조회',
                 'cnt' :0
               },
               {
-                'name': '노하우',
+                'name': '상품 스크랩북',
                 'cnt' :0
               },
                  {
-                'name': '질문과 답변',
+                'name': '나의 문의내역',
                 'cnt' :0
               },
                  {
-                'name': '리뷰쓰기',
-                'cnt' :0
-              },
-                 {
-                'name': '리뷰',
+                'name': '나의 리뷰',
                 'cnt' :0
               },
               {
@@ -177,9 +178,18 @@ export default {
     margin: 3px;
 }
 .auto-set{
-    font-size: 14px;
+    font-size: 12px;
     color: #727578;
+    display: flex;
     margin-top: 6px;
+    flex-direction: column;
+    align-items: center;
+}
+.auto-set > strong{
+    font-size: 12px;
+    color: #36C5F1;
+    margin-top: 6px;
+    font-weight: bold;
 }
 .auto{
     font-size: 12px;
