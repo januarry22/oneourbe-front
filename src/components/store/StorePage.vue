@@ -13,24 +13,25 @@
         </button>
       </div>
       <b-tabs class="slide-menu" v-dragscroll>
-        <b-tab title="인기" active>
-          <MainSection></MainSection>
+        <b-tab title="스토어홈">
+          <StoreSection></StoreSection>
         </b-tab>
-        <b-tab title="팔로잉"></b-tab>
-        <b-tab title="사진"></b-tab>
-        <b-tab title="집들이"></b-tab>
-        <b-tab title="노하우"></b-tab>
-        <b-tab title="전문가집들이"></b-tab>
-        <b-tab title="질문과답변">
+        <b-tab title="베스트"></b-tab>
+        <b-tab title="오늘의딜"></b-tab>
+        <b-tab title="반짝초특가"></b-tab>
+        <b-tab title="리퍼마켓"></b-tab>
+        <b-tab title="빠른배송">
           <csCenter></csCenter>
         </b-tab>
+        <b-tab title="프리미엄"></b-tab>
+        <b-tab title="기획전"></b-tab>
       </b-tabs> 
   </div>
 </template>
 
 <script>
 import csCenter from '@/components/cs/csCenter.vue';
-import MainSection from '@/components/main/MainSection.vue';
+import StoreSection from '@/components/store/StoreSection.vue';
 import Footer from '@/components/Footer.vue';
 import BottomNav from '@/components/BottomNav.vue';
 import { BIcon } from 'bootstrap-vue'
@@ -38,13 +39,13 @@ import { dragscroll } from 'vue-dragscroll'
 
 export default {
   //eslint-disable-next-line
-  name: 'MainPage',
+  name: 'StorePage',
   components: {
     BottomNav,
     Footer,
     BIcon,
-    MainSection,
-    csCenter
+    csCenter,
+    StoreSection
   },
   directives: {
     'dragscroll': dragscroll
@@ -63,4 +64,6 @@ export default {
 </script>
 <style scoped>
   @import "../../assets/style.css";
+
+  
 </style>

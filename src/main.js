@@ -21,8 +21,8 @@ Vue.use(VueDragscroll)
 
 // axios
 //Vue.use(axios)
-
-Vue.prototype.$http = axios; // Correct
+// 2.x 버전 이상 사용
+Vue.prototype.$http = axios; 
 Vue.prototype.$axios = axios
 
 
