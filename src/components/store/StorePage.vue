@@ -19,7 +19,9 @@
         <b-tab title="베스트">
           <StoreBest></StoreBest>
         </b-tab>
-        <b-tab title="오늘의딜"></b-tab>
+        <b-tab title="오늘의딜">
+          <StoreTodayPrice></StoreTodayPrice>
+        </b-tab>
         <b-tab title="반짝초특가"></b-tab>
         <b-tab title="리퍼마켓"></b-tab>
         <b-tab title="빠른배송">
@@ -31,6 +33,7 @@
 </template>
 
 <script>
+import StoreTodayPrice from '@/components/store/StoreTodayPrice.vue';
 import StoreSection from '@/components/store/StoreSection.vue';
 import StoreBest from '@/components/store/StoreBest.vue';
 import { dragscroll } from 'vue-dragscroll'
@@ -39,7 +42,8 @@ export default {
   name: 'StorePage',
   components: {
     StoreSection,
-    StoreBest
+    StoreBest,
+    StoreTodayPrice
   },
   directives: {
     'dragscroll': dragscroll
