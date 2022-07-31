@@ -18,7 +18,9 @@
         </b-tab>
         <b-tab title="팔로잉"></b-tab>
         <b-tab title="사진"></b-tab>
-        <b-tab title="집들이"></b-tab>
+        <b-tab title="집들이">
+          <MainComce></MainComce>
+        </b-tab>
         <b-tab title="노하우"></b-tab>
         <b-tab title="전문가집들이"></b-tab>
         <b-tab title="질문과답변">
@@ -29,6 +31,7 @@
 </template>
 
 <script>
+import MainComce from '@/components/main/MainComce';
 import csCenter from '@/components/cs/csCenter.vue';
 import MainSection from '@/components/main/MainSection.vue';
 import Footer from '@/components/Footer.vue';
@@ -44,7 +47,8 @@ export default {
     Footer,
     BIcon,
     MainSection,
-    csCenter
+    csCenter,
+    MainComce
   },
   directives: {
     'dragscroll': dragscroll

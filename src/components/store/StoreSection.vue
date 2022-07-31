@@ -62,7 +62,7 @@
           </ul>
         </section>
 
-        <section class="section4 list-wrap video-photo">
+        <section class="section3 list-wrap video-photo">
           <div class="find-title">
             <h2>오늘의 딜</h2>
             <button class="today">더보기</button>
