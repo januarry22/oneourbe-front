@@ -188,6 +188,7 @@
     color: rgba(255,255,255,0.3);
   }
   .list-wrap h4{
+    display: block;
     font-size: 16px;
     font-weight: bold;
     color: #36C5F1;
@@ -203,6 +204,18 @@
     text-overflow: ellipsis;
   }
   .section2.list-wrap h4{
+    display: block;  
+    margin-right: 0;
+  }
+  .section6.list-wrap h4{
+    display: block;  
+    margin-right: 0;
+  }
+  .section3.list-wrap h4{
+    display: block;  
+    margin-right: 0;
+  }
+  .section7.list-wrap h4{
     display: block;  
     margin-right: 0;
   }
@@ -255,7 +268,7 @@
     background-color: #ffffff;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
   }
   .today-deal .content .badge{
     background-color: #FF7777;
